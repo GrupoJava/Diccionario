@@ -155,14 +155,26 @@ public class InterfazGrafica {
 		            txtTextoATraducir.setText(file.getAbsolutePath());
 		        } 
 			}else if(a.getSource() == btnTraducirTexto){
-				
-			}else if(a.getSource() == buttonCalcular){
 				try {
-					manejador.leerDiccionario(textField.getText().toString());
+					textArea.setText(manejador.traducir(txtTextoATraducir.getText().toString()));
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+			}else if(a.getSource() == buttonCalcular){
+				try {
+					manejador.leerDiccionario(textField.getText().toString());
+					manejador.getArbol().recorrerArbol(manejador.getArbol().getRoot());
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				/*try {
+					//textArea_1.setText(manejador.leerDiccionario(textField.getText().toString()));
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}*/
 			}
 		}
 	}
