@@ -21,6 +21,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 import javax.swing.JButton;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
@@ -80,7 +81,7 @@ public class InterfazGrafica {
 	 */
 	public void initialize(){
 		frame = new JFrame();
-		frame.setBounds(100, 100, 665, 381);
+		frame.setBounds(100, 100, 683, 381);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -90,7 +91,7 @@ public class InterfazGrafica {
 		frame.getContentPane().add(lblCalculadoraPostfix);
 		
 		btnSeleccionarArchivo = new JButton("Seleccionar Diccionario");
-		btnSeleccionarArchivo.setBounds(294, 128, 162, 23);
+		btnSeleccionarArchivo.setBounds(294, 128, 191, 23);
 		btnSeleccionarArchivo.addActionListener(evento);
 		frame.getContentPane().add(btnSeleccionarArchivo);
 		
@@ -100,17 +101,19 @@ public class InterfazGrafica {
 		textField.setColumns(10);
 		
 		buttonCalcular = new JButton("Agregar Diccionario");
-		buttonCalcular.setBounds(466, 128, 162, 23);
+		buttonCalcular.setBounds(495, 128, 162, 23);
 		buttonCalcular.addActionListener(evento);
 		frame.getContentPane().add(buttonCalcular);
 		
 		JLabel lblResultados = new JLabel("Texto Traducido");
 		lblResultados.setBounds(20, 199, 125, 21);
 		frame.getContentPane().add(lblResultados);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(20, 218, 351, 113);
+		frame.getContentPane().add(scrollPane);
 		
 		textArea = new JTextArea();
-		textArea.setBounds(20, 218, 322, 113);
-		frame.getContentPane().add(textArea);
+		scrollPane.setViewportView(textArea);
 		
 		txtTextoATraducir = new JTextField();
 		txtTextoATraducir.setBounds(20, 162, 264, 20);
@@ -118,21 +121,23 @@ public class InterfazGrafica {
 		txtTextoATraducir.setColumns(10);
 		
 		btnSeleccionarTexto = new JButton("Seleccionar Texto");
-		btnSeleccionarTexto.setBounds(294, 161, 162, 23);
+		btnSeleccionarTexto.setBounds(294, 161, 191, 23);
 		btnSeleccionarTexto.addActionListener(evento);
 		frame.getContentPane().add(btnSeleccionarTexto);
 		
 		btnTraducirTexto = new JButton("Traducir Texto");
-		btnTraducirTexto.setBounds(466, 162, 162, 23);
+		btnTraducirTexto.setBounds(495, 161, 162, 23);
 		btnTraducirTexto.addActionListener(evento);
 		frame.getContentPane().add(btnTraducirTexto);
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(381, 218, 276, 113);
+		frame.getContentPane().add(scrollPane_1);
 		
 		textArea_1 = new JTextArea();
-		textArea_1.setBounds(352, 218, 276, 113);
-		frame.getContentPane().add(textArea_1);
+		scrollPane_1.setViewportView(textArea_1);
 		
 		JLabel lblDiccionario = new JLabel("Diccionario");
-		lblDiccionario.setBounds(352, 202, 104, 14);
+		lblDiccionario.setBounds(381, 202, 104, 14);
 		frame.getContentPane().add(lblDiccionario);
 		
 		fc = new JFileChooser();
@@ -165,16 +170,11 @@ public class InterfazGrafica {
 				try {
 					manejador.leerDiccionario(textField.getText().toString());
 					manejador.getArbol().recorrerArbol(manejador.getArbol().getRoot());
+					textArea_1.setText(manejador.getArbol().getDiccionario());
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				/*try {
-					//textArea_1.setText(manejador.leerDiccionario(textField.getText().toString()));
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}*/
 			}
 		}
 	}

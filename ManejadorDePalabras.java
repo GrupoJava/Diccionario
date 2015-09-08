@@ -26,15 +26,21 @@ public class ManejadorDePalabras{
 	}
 	public String traducir(String file) throws FileNotFoundException{
 		File archivo = new File(file);
-		
 		String[] palabras;
+		String traduccion = "";
 		BufferedReader br = new BufferedReader(new FileReader(file));
 	    String line = null;
         try {
 			while ((line = br.readLine()) != null) {
 			    palabras=line.toString().replace(".", "").split(" ");
 			    for(String palabra: palabras){
+			    	arbol.setTraduccion("");
 			    	arbol.buscarPalabra(arbol.getRoot(), palabra);
+			    	if(arbol.getTraduccion().equalsIgnoreCase("")){
+			    		traduccion=traduccion+"*"+palabra+"* ";
+			    	}else{
+			    		traduccion=traduccion+ arbol.getTraduccion()+" ";
+			    	}
 			    }
 			}
 		} catch (IOException e) {
