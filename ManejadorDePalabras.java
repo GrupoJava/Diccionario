@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class ManejadorDePalabras{
-	private Arbol arbol= new Arbol();
+	private Arbol<String> arbol= new Arbol();
 	
 	
 	public void leerDiccionario(String file) throws FileNotFoundException{
@@ -36,7 +36,7 @@ public class ManejadorDePalabras{
 			    for(String palabra: palabras){
 			    	arbol.setTraduccion("");
 			    	arbol.buscarPalabra(arbol.getRoot(), palabra);
-			    	if(arbol.getTraduccion().equalsIgnoreCase("")){
+			    	if(((String) arbol.getTraduccion()).equalsIgnoreCase("")){
 			    		traduccion=traduccion+"*"+palabra+"* ";
 			    	}else{
 			    		traduccion=traduccion+ arbol.getTraduccion()+" ";
@@ -48,7 +48,7 @@ public class ManejadorDePalabras{
 		}
 		return traduccion;
 	}
-	public Arbol getArbol() {
+	public Arbol<String> getArbol() {
 		return arbol;
 	}
 	public void setArbol(Arbol arbol) {

@@ -1,4 +1,4 @@
-public class Arbol{
+public class Arbol<E>{
 	private Nodo root;
 	private String traduccion="";
 	private String diccionario="";
@@ -49,14 +49,14 @@ public class Arbol{
 	public void setRoot(Nodo root) {
 		this.root = root;
 	}
-	public String getTraduccion() {
-		return traduccion;
+	public E getTraduccion() {
+		return (E) traduccion;
 	}
 	public void setTraduccion(String traduccion) {
 		this.traduccion = traduccion;
 	}
-	public String getDiccionario() {
-		return diccionario;
+	public E getDiccionario() {
+		return (E) diccionario;
 	}
 	public void setDiccionario(String diccionario) {
 		this.diccionario = diccionario;

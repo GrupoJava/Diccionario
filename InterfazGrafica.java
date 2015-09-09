@@ -170,7 +170,7 @@ public class InterfazGrafica {
 				try {
 					manejador.leerDiccionario(textField.getText().toString());
 					manejador.getArbol().recorrerArbol(manejador.getArbol().getRoot());
-					textArea_1.setText(manejador.getArbol().getDiccionario());
+					textArea_1.setText((String) manejador.getArbol().getDiccionario());
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
