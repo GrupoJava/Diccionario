@@ -1,7 +1,7 @@
 /**
  * Universidad del Valle de Guatemala
  * Algoritmos y Estructura de Datos
- * Sección: 10
+ * Seccion: 10
  * 20/08/2015
  * Hoja de Trabajo 4
  *
@@ -30,14 +30,14 @@ import javax.swing.JRadioButton;
 
 /**
  * Esta es la clase InterfazGrafica y muestra una Interfaz
- * mas amigable con el usuario al tener un botón para buscar el
+ * mas amigable con el usuario al tener un botï¿½n para buscar el
  * archivo deseado para realizar las operacinoes. Busca el archivo
- * y tienen otro botón que permite realizar el cálculo de la operacion.
- * Por útltimo, tiene un área de texto en el cual muestra el resultado
- * de la operación.
+ * y tienen otro botï¿½n que permite realizar el cï¿½lculo de la operacion.
+ * Por ï¿½tltimo, tiene un ï¿½rea de texto en el cual muestra el resultado
+ * de la operaciï¿½n.
  * 
  * @author Rudy Garrido 
- * @author Yosemite Meléndez
+ * @author Yosemite Melï¿½ndez
  *
  */
 public class InterfazGrafica {
@@ -74,10 +74,10 @@ public class InterfazGrafica {
 		initialize();
 	}
 	/**
-	 * Crea los elementos de la interfaz gráfica.
+	 * Crea los elementos de la interfaz grï¿½fica.
 	 *El frame principal, etiquetas para nombre y 
 	 *resultado, botones buscar archivo y calcular 
-	 *y un área de texto para mostrar el resultado.
+	 *y un ï¿½rea de texto para mostrar el resultado.
 	 */
 	public void initialize(){
 		frame = new JFrame();
@@ -169,7 +169,7 @@ public class InterfazGrafica {
 			}else if(a.getSource() == buttonCalcular){
 				try {
 					manejador.leerDiccionario(textField.getText().toString());
-					manejador.getArbol().recorrerArbol(manejador.getArbol().getRoot());
+					manejador.getArbol().get(manejador.getArbol().getRoot());
 					textArea_1.setText((String) manejador.getArbol().getDiccionario());
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block

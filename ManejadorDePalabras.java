@@ -1,3 +1,13 @@
+/**
+ * @author Rudy Garrido
+ * @author Andre Rodas
+ * @author Delbert Custodio
+ * 
+ * Clase basada en el capitulo 14 del libro de Texto, sirve para guardar en memoria
+ * las palabras del archivo de texto y traducir 
+ *
+ */
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -5,7 +15,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class ManejadorDePalabras{
-	private Arbol<String> arbol= new Arbol();
+	private Tree<String> arbol= new Tree();
 	
 	
 	public void leerDiccionario(String file) throws FileNotFoundException{
@@ -18,7 +28,7 @@ public class ManejadorDePalabras{
 			while ((line = br.readLine()) != null) {
 			    palabra = line.toString().replace("(", "").replace(",", "").replace(")", "");
 			    palabras=palabra.split(" ");
-			    arbol.agregarNodo(arbol.getRoot(), palabras[0], palabras[1]);
+			    arbol.add(arbol.getRoot(), palabras[0], palabras[1]);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -35,7 +45,7 @@ public class ManejadorDePalabras{
 			    palabras=line.toString().replace(".", "").split(" ");
 			    for(String palabra: palabras){
 			    	arbol.setTraduccion("");
-			    	arbol.buscarPalabra(arbol.getRoot(), palabra);
+			    	arbol.search(arbol.getRoot(), palabra);
 			    	if(((String) arbol.getTraduccion()).equalsIgnoreCase("")){
 			    		traduccion=traduccion+"*"+palabra+"* ";
 			    	}else{
@@ -48,10 +58,10 @@ public class ManejadorDePalabras{
 		}
 		return traduccion;
 	}
-	public Arbol<String> getArbol() {
+	public Tree<String> getArbol() {
 		return arbol;
 	}
-	public void setArbol(Arbol arbol) {
+	public void setTree(Tree arbol) {
 		this.arbol = arbol;
 	}
 	
